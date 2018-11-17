@@ -1,0 +1,267 @@
+numberConverter.cpp: In function ‘int main()’:
+numberConverter.cpp:23:28: error: cannot convert ‘std::vector<int>’ to ‘char*’ for argument ‘1’ to ‘int binToDec(char*)’
+     cout << binToDec(number);
+                            ^
+numberConverter.cpp:25:13: error: ‘total’ was not declared in this scope
+     cout << total << endl;
+             ^~~~~
+numberConverter.cpp:25:13: note: suggested alternative: ‘strtol’
+     cout << total << endl;
+             ^~~~~
+             strtol
+numberConverter.cpp: In function ‘int binToDec(std::vector<int>)’:
+numberConverter.cpp:47:55: error: no match for ‘operator!=’ (operand types are ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ and ‘<unresolved overloaded function type>’)
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                    ~~~^~~~~~~~~~~~~
+In file included from /usr/include/c++/7/iosfwd:40:0,
+                 from /usr/include/c++/7/ios:38,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/postypes.h:221:5: note: candidate: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^~~~~~~~
+/usr/include/c++/7/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::fpos<_StateT>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/ios:40,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/stl_pair.h:456:5: note: candidate: template<class _T1, class _T2> constexpr bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_pair.h:456:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::pair<_T1, _T2>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/ios:40,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/stl_iterator.h:311:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator!=(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:311:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/ios:40,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/stl_iterator.h:349:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator!=(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:349:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/ios:40,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/stl_iterator.h:1130:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator!=(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:1130:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::move_iterator<_IteratorL>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/ios:40,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/stl_iterator.h:1136:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator!=(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:1136:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::move_iterator<_IteratorL>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/string:41:0,
+                 from /usr/include/c++/7/bits/locale_classes.h:40,
+                 from /usr/include/c++/7/bits/ios_base.h:41,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/allocator.h:158:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator!=(const allocator<_T1>&, const allocator<_T2>&)
+     ^~~~~~~~
+/usr/include/c++/7/bits/allocator.h:158:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::allocator<_CharT>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/string:41:0,
+                 from /usr/include/c++/7/bits/locale_classes.h:40,
+                 from /usr/include/c++/7/bits/ios_base.h:41,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/allocator.h:164:5: note: candidate: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^~~~~~~~
+/usr/include/c++/7/bits/allocator.h:164:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::allocator<_CharT>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/string:52:0,
+                 from /usr/include/c++/7/bits/locale_classes.h:40,
+                 from /usr/include/c++/7/bits/ios_base.h:41,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/basic_string.h:6044:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6044:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/string:52:0,
+                 from /usr/include/c++/7/bits/locale_classes.h:40,
+                 from /usr/include/c++/7/bits/ios_base.h:41,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/basic_string.h:6057:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const _CharT* __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6057:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   mismatched types ‘const _CharT*’ and ‘__gnu_cxx::__normal_iterator<int*, std::vector<int> >’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/string:52:0,
+                 from /usr/include/c++/7/bits/locale_classes.h:40,
+                 from /usr/include/c++/7/bits/ios_base.h:41,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/basic_string.h:6069:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6069:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/bits/ios_base.h:46:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/system_error:319:3: note: candidate: bool std::operator!=(const std::error_code&, const std::error_code&)
+   operator!=(const error_code& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:319:3: note:   no known conversion for argument 1 from ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ to ‘const std::error_code&’
+/usr/include/c++/7/system_error:323:3: note: candidate: bool std::operator!=(const std::error_code&, const std::error_condition&)
+   operator!=(const error_code& __lhs, const error_condition& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:323:3: note:   no known conversion for argument 1 from ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ to ‘const std::error_code&’
+/usr/include/c++/7/system_error:327:3: note: candidate: bool std::operator!=(const std::error_condition&, const std::error_code&)
+   operator!=(const error_condition& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:327:3: note:   no known conversion for argument 1 from ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ to ‘const std::error_condition&’
+/usr/include/c++/7/system_error:331:3: note: candidate: bool std::operator!=(const std::error_condition&, const std::error_condition&)
+   operator!=(const error_condition& __lhs,
+   ^~~~~~~~
+/usr/include/c++/7/system_error:331:3: note:   no known conversion for argument 1 from ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ to ‘const std::error_condition&’
+In file included from /usr/include/c++/7/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/7/bits/basic_ios.h:37,
+                 from /usr/include/c++/7/ios:44,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/streambuf_iterator.h:210:5: note: candidate: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^~~~~~~~
+/usr/include/c++/7/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/vector:64:0,
+                 from numberConverter.cpp:2:
+/usr/include/c++/7/bits/stl_vector.h:1620:5: note: candidate: template<class _Tp, class _Alloc> bool std::operator!=(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     operator!=(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_vector.h:1620:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const std::vector<_Tp, _Alloc>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/x86_64-suse-linux/bits/c++allocator.h:33:0,
+                 from /usr/include/c++/7/bits/allocator.h:46,
+                 from /usr/include/c++/7/string:41,
+                 from /usr/include/c++/7/bits/locale_classes.h:40,
+                 from /usr/include/c++/7/bits/ios_base.h:41,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/ext/new_allocator.h:160:5: note: candidate: template<class _Tp> bool __gnu_cxx::operator!=(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
+     operator!=(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
+     ^~~~~~~~
+/usr/include/c++/7/ext/new_allocator.h:160:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ is not derived from ‘const __gnu_cxx::new_allocator<_Tp>’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/ios:40,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/stl_iterator.h:880:5: note: candidate: template<class _Iterator, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
+     operator!=(const __normal_iterator<_Iterator, _Container>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:880:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’ and ‘std::vector<int>::const_iterator (std::vector<int>::*)() const noexcept {aka __gnu_cxx::__normal_iterator<const int*, std::vector<int> > (std::vector<int>::*)() const noexcept}’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+numberConverter.cpp:47:65: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’ and ‘std::vector<int>::iterator (std::vector<int>::*)() noexcept {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> > (std::vector<int>::*)() noexcept}’
+numberConverter.cpp:47:65: note:   could not resolve address from overloaded function ‘number.std::vector<int>::end’
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/bits/char_traits.h:39,
+                 from /usr/include/c++/7/ios:40,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from numberConverter.cpp:1:
+/usr/include/c++/7/bits/stl_iterator.h:873:5: note: candidate: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
+     operator!=(const __normal_iterator<_IteratorL, _Container>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:873:5: note:   template argument deduction/substitution failed:
+numberConverter.cpp:47:65: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorR, _Container>’ and ‘std::vector<int>::const_iterator (std::vector<int>::*)() const noexcept {aka __gnu_cxx::__normal_iterator<const int*, std::vector<int> > (std::vector<int>::*)() const noexcept}’
+     for(vector<int>::iterator it = number.begin(); it != number.end; it++) {
+                                                                 ^~~
+numberConverter.cpp:47:65: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorR, _Container>’ and ‘std::vector<int>::iterator (std::vector<int>::*)() noexcept {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> > (std::vector<int>::*)() noexcept}’
+numberConverter.cpp:47:65: note:   could not resolve address from overloaded function ‘number.std::vector<int>::end’
+numberConverter.cpp:48:35: error: no match for ‘operator[]’ (operand types are ‘std::vector<int>’ and ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’)
+         total = total * 2 + number[it];
+                                   ^
+In file included from /usr/include/c++/7/vector:64:0,
+                 from numberConverter.cpp:2:
+/usr/include/c++/7/bits/stl_vector.h:795:7: note: candidate: std::vector<_Tp, _Alloc>::reference std::vector<_Tp, _Alloc>::operator[](std::vector<_Tp, _Alloc>::size_type) [with _Tp = int; _Alloc = std::allocator<int>; std::vector<_Tp, _Alloc>::reference = int&; std::vector<_Tp, _Alloc>::size_type = long unsigned int]
+       operator[](size_type __n) _GLIBCXX_NOEXCEPT
+       ^~~~~~~~
+/usr/include/c++/7/bits/stl_vector.h:795:7: note:   no known conversion for argument 1 from ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ to ‘std::vector<int>::size_type {aka long unsigned int}’
+/usr/include/c++/7/bits/stl_vector.h:813:7: note: candidate: std::vector<_Tp, _Alloc>::const_reference std::vector<_Tp, _Alloc>::operator[](std::vector<_Tp, _Alloc>::size_type) const [with _Tp = int; _Alloc = std::allocator<int>; std::vector<_Tp, _Alloc>::const_reference = const int&; std::vector<_Tp, _Alloc>::size_type = long unsigned int]
+       operator[](size_type __n) const _GLIBCXX_NOEXCEPT
+       ^~~~~~~~
+/usr/include/c++/7/bits/stl_vector.h:813:7: note:   no known conversion for argument 1 from ‘std::vector<int>::iterator {aka __gnu_cxx::__normal_iterator<int*, std::vector<int> >}’ to ‘std::vector<int>::size_type {aka long unsigned int}’
+numberConverter.cpp:42:9: warning: unused variable ‘digit’ [-Wunused-variable]
+     int digit = 0;
+         ^~~~~
