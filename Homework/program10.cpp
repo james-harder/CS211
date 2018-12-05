@@ -147,12 +147,17 @@ void writeToFile(const Zipcode zip) {
 void processZip(int prompt) {
 	// ask user for zipcode (roman if prompt == 1)
 	cout << "Enter a Zip code in " << ((prompt == 1) ? "Roman format (#####):" : "Bar-Code format (1's and 0's):");
-	string zip;
-	cin >> zip;
+	string z;
+	cin >> z;
+	(if z.size() != 5 || z.size() != 25) {
+		cout << "Sorry, invalid input." << endl;
+		return;
+	}
 
-	cout << zip << endl;
+	cout << z << endl;
 	// pass string to fillZipCode and create a Zipcode object from the returned object
-
+	Zipcode zip = fillZipcode(z);
+	
 	// print roman zipcode
 	// print graph 
 	// save graph
