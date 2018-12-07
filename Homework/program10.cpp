@@ -19,6 +19,8 @@ struct Zipcode {
 						// EX: '  || |  |  ||  |   |'
 };
 
+const int pKey[5] = {7, 4, 2, 1, 0};                      // the list of values for translating postnet
+
 // accepts both roman and barcode formats
 // fills both struct members
 Zipcode fillZipcode(const string zip);
@@ -39,9 +41,12 @@ void writeToFile(const Zipcode zip);
 // Get user input and call appropriate functions
 void processZip(int prompt);
 
-int main(void){	
-	int mainMenu;
+// convert 1's and 0's to graphical barcode
+string postnetToBarcode(const Zipcode zip);
 
+int main() {	
+	int mainMenu;
+	
 	cout << "This program is able to convert zip codes to a "
 		 << "POSTNET format and vice versa\n"
 		 << "\t1. Convert zip code to POSTNET\n"
@@ -70,37 +75,53 @@ int main(void){
 }
 
 Zipcode fillZipcode(const string zip) {
-	// create new Zipcode object
-	// check length of zip to determine roman/postnet
-	// save in appropiate variable
-	// convert and save in other variable
-	// return Zipcode object
-	struct Zipcode z { 67276, " ||  |   |  | ||   | ||  "};
+	string p;
+	int r;
+
+	if( zip.size() == 5 ) {
+		r = stoi(zip);
+		p = romanToPOSTNET(r);
+	} else {
+		p = zip;
+		r = postnetToRoman(p);
+	}
+	
+	struct Zipcode z { .romanZipcode = r, .postnetCode = p };
+
+	cout << "\nYour zip code is ";
+	printRomanZip(z);
+	cout << ", and the barcode looks like this:\n\n";
+	printPOSTNET(z);
+	cout << endl;
+
 	return z;
 }
 
 string romanToPOSTNET(const int r) {
-	// this is going to take some thought
-	// for now, just return a string:
-	return string(" ||  |   |  | ||   | ||  ");
+	string p;
+	string roman = to_string(r);
+	for(int i = 0; i < 5; i++) {
+        int hits = 0;
+		int digit = roman.at(i) - '0';
+        if(digit != 0) {
+            for(int j = 0; j < 5; j++) {                
+                if(digit >= pKey[j] && hits < 2) {
+                    p.append("1");
+                    digit -= pKey[j];
+                    hits++;
+                } else {
+                    p.append("0");
+                }
+            }
+        } else {
+            p.append("11000");
+        }
+	}
+    return p;
 }
 
+
 int postnetToRoman(const string p) {
-	// the encoded string, since the second row is always the same, it can be 
-    // created programmatically
-    //string p = "|   | |     |       |     |   |   | |     | |       |";
-
-    // binary version of p, with leading and trailing pipes removed
-    string b = "";
-    for(int i = 2; i <= 50; i += 2) {
-        if(p.at(i) == '|') {
-            b += "|";
-        } else {
-            b += " ";
-        }
-    }
-
-    int pKey[5] = {7, 4, 2, 1, 0};                      // the list of values for translating postnet
     string roman = "";                                  // the roman version of the zipcode
     int digitSum = 0;                                   // holds the sum of each five number set
     for(int i = 0; i < 25; i++) {
@@ -110,56 +131,68 @@ int postnetToRoman(const string p) {
             } else {
                 roman.append(to_string(digitSum));
             }
-            
             digitSum = 0;
-        } else if(b.at(i) == '|') {
+        } else if(p.at(i) == '1') {
             digitSum += pKey[i % 5];
         }
     }
-	
-    cout << roman << endl;
-
-    // print out postnet barcode
-    cout << p << '\n';
-    for(int i = 0; i < 26; i++) {
-        cout << "| ";
-    }
-    cout << "|" << endl;
 
 	return stoi(roman);
 }
 
 void printRomanZip(const Zipcode zip) {
+	cout << zip.romanZipcode;
 
 	return;
 }
 
 void printPOSTNET(const Zipcode zip) {
-
+	cout << postnetToBarcode(zip);
 	return;
 }
 
 void writeToFile(const Zipcode zip) {
+	string fileData = postnetToBarcode(zip);
+	string fileName = to_string(zip.romanZipcode) + ".txt";
+	ofstream zipFile(fileName, ofstream::out);
 
+	if(!zipFile.fail()) {
+		zipFile << fileData;
+		zipFile.close();
+	}
+	cout << "Your zip code was saved in the file: " << fileName;
 	return;
 }
 
 void processZip(int prompt) {
 	// ask user for zipcode (roman if prompt == 1)
-	cout << "Enter a Zip code in " << ((prompt == 1) ? "Roman format (#####):" : "Bar-Code format (1's and 0's):");
+	cout << "\nEnter a Zip code in " << ((prompt == 1) ? "Roman format (#####):" : "Bar-Code format (1's and 0's):");
 	string z;
 	cin >> z;
-	(if z.size() != 5 || z.size() != 25) {
-		cout << "Sorry, invalid input." << endl;
+	if( z.size() != 5 && z.size() != 25 ) {
+		cout << "Sorry, " << z.size() << " is invalid input." << endl;
 		return;
 	}
 
-	cout << z << endl;
 	// pass string to fillZipCode and create a Zipcode object from the returned object
 	Zipcode zip = fillZipcode(z);
-	
-	// print roman zipcode
-	// print graph 
-	// save graph
+	cout << endl;
+
+	writeToFile(zip);
+	cout << '\n' << endl;
+
 	return;
+}
+
+string postnetToBarcode(const Zipcode zip) {
+	string barcode = "|";
+	for( auto i : zip.postnetCode) {
+		i == '1' ? barcode.append("|") : barcode.append(" ");
+	}
+	barcode.append("|\n");
+	for(int i = 0; i < 27; i++) {
+		barcode.append("|");
+	}
+
+	return barcode;
 }

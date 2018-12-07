@@ -13,10 +13,11 @@
 
 #include <iostream>
 #include <string>
-#
+
 
 using namespace std;
-
+const int pKey[5] = {7,4,2,1,0};
+string romanToPOSTNET(const int r);
 int main(void){
     // index:   |1|2|3|4|5|
     // value:   |7|4|2|1|0|
@@ -38,42 +39,70 @@ int main(void){
 
     // the encoded string, since the second row is always the same, it can be 
     // created programmatically
-    string p = "|   | |     |       |     |   |   | |     | |       |";
+    // string p = "|   | |     |       |     |   |   | |     | |       |";
 
     // binary version of p, with leading and trailing pipes removed
-    string b = "";
-    for(int i = 2; i <= 50; i += 2) {
-        if(p.at(i) == '|') {
-            b += "|";
-        } else {
-            b += " ";
-        }
-    }
+    // string b = "";
+    // for(int i = 2; i <= 50; i += 2) {
+    //     if(p.at(i) == '|') {
+    //         b += "|";
+    //     } else {
+    //         b += " ";
+    //     }
+    // }
 
-    int pKey[5] = {7, 4, 2, 1, 0};                      // the list of values for translating postnet
-    string roman = "";                                  // the roman version of the zipcode
-    int digitSum = 0;                                   // holds the sum of each five number set
-    for(int i = 0; i < 25; i++) {
-        if((i+1) % 5 == 0) {                            // matches the value of pKey to the index of the current character
-            if(digitSum == 11) {
-                roman.append("0");
-            } else {
-                roman.append(to_string(digitSum));
-            }
+    // int pKey[5] = {7, 4, 2, 1, 0};                      // the list of values for translating postnet
+    // string roman = "";                                  // the roman version of the zipcode
+    // int digitSum = 0;                                   // holds the sum of each five number set
+    // for(int i = 0; i < 25; i++) {
+    //     if((i+1) % 5 == 0) {                            // matches the value of pKey to the index of the current character
+    //         if(digitSum == 11) {
+    //             roman.append("0");
+    //         } else {
+    //             roman.append(to_string(digitSum));
+    //         }
             
-            digitSum = 0;
-        } else if(b.at(i) == '|') {
-            digitSum += pKey[i % 5];
-        }
-    }
+    //         digitSum = 0;
+    //     } else if(b.at(i) == '|') {
+    //         digitSum += pKey[i % 5];
+    //     }
+    // }
 	
-    cout << roman << endl;
+    // cout << roman << endl;
 
     // print out postnet barcode
-    cout << p << '\n';
-    for(int i = 0; i < 26; i++) {
-        cout << "| ";
-    }
-    cout << "|" << endl;
+    // cout << p << '\n';
+    // for(int i = 0; i < 26; i++) {
+    //     cout << "| ";
+    // }
+    // cout << "|" << endl;
+    
+    cout << romanToPOSTNET(67272) << endl;
+    cout << romanToPOSTNET(69072) << endl;
+
 	return 0;	
+}
+
+string romanToPOSTNET(const int r) {
+	string p;
+	string roman = to_string(r);
+	for(int i = 0; i < 5; i++) {
+        int hits = 0;
+		int digit = roman.at(i) - '0';
+        if(digit != 0) {
+            for(int j = 0; j < 5; j++) {                
+                if(digit >= pKey[j] && hits < 2) {
+                    p.append("1");
+                    digit -= pKey[j];
+                    hits++;
+                } else {
+                    p.append("0");
+                }
+            }
+        } else {
+            p.append("11000");
+        }
+	}
+
+    return p;
 }
