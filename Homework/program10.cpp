@@ -124,6 +124,7 @@ string romanToPOSTNET(const int r) {
 int postnetToRoman(const string p) {
     string roman = "";                                  // the roman version of the zipcode
     int digitSum = 0;                                   // holds the sum of each five number set
+	int hits = 0;
     for(int i = 0; i < 25; i++) {
         if((i+1) % 5 == 0) {                            // matches the value of pKey to the index of the current character
             if(digitSum == 11) {
@@ -134,6 +135,11 @@ int postnetToRoman(const string p) {
             digitSum = 0;
         } else if(p.at(i) == '1') {
             digitSum += pKey[i % 5];
+			hits += 1;
+			if(hits > 2) {
+				cerr << "There was a problem with the Postnet number entered." << endl;
+				exit(1);
+			}
         }
     }
 
